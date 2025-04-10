@@ -26,10 +26,10 @@ jobs:
 
     - name: Guardar las imágenes en un solo archivo tar
       run: |
-        docker save -o gula.tar nginx:latest php:latest
+        docker save -o avaricia.tar nginx:latest php:latest
 
     - name: Subir la imagen como artefacto
       uses: actions/upload-artifact@v4
       with:
-        name: gula
-        path: gula.tar
+        name: avaricia
+        path: avaricia.tar
