@@ -1,0 +1,47 @@
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./php:/var/www/html
+    depends_on:
+      - php
+    networks:
+      default:
+        ipv4_address: 172.32.0.2
+
+  php:
+    image: php:latest
+    container_name: php-fpm
+    volumes:
+      - ./php:/var/www/html
+    depends_on:
+      - mysql
+    networks:
+      default:
+        ipv4_address: 172.32.0.3
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: banco
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    command: --secure-file-priv=""
+    networks:
+      default:
+        ipv4_address: 172.32.0.4
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.32.0.0/16

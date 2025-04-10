@@ -1,0 +1,35 @@
+name: DockerTar
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Clonar el repositorio
+      uses: actions/checkout@v3
+
+
+    - name: Construir las imágenes Docker
+      run: |
+        docker build -t nginx:latest -f nginx .
+        docker build -t php:latest -f php-fpm .
+
+    - name: Guardar las imágenes en un solo archivo tar
+      run: |
+        docker save -o gula.tar nginx:latest php:latest
+
+    - name: Subir la imagen como artefacto
+      uses: actions/upload-artifact@v4
+      with:
+        name: gula
+        path: gula.tar
