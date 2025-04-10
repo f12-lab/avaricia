@@ -76,8 +76,6 @@ $ sudo bash auto_deploy.sh avaricia.tar
 
 En nuestro caso la base de datos usa Mysql, podemos ver una guía de los distintos payloads para otros servicios de bases de datos -> https://portswigger.net/web-security/sql-injection/cheat-sheet[SQLiCheatSheet].
 
-<<<
-
 === 1. In-band SQL injection
 
 ==== a. Error-based SQL injection
