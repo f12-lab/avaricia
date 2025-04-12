@@ -4,8 +4,6 @@ services:
     container_name: nginx
     ports:
       - "80:80"
-    volumes:
-      - ./php:/var/www/html
     depends_on:
       - php
     networks:
@@ -15,8 +13,6 @@ services:
   php:
     image: php:latest
     container_name: php-fpm
-    volumes:
-      - ./php:/var/www/html
     depends_on:
       - mysql
     networks:
