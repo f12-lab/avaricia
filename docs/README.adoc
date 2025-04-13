@@ -63,9 +63,17 @@ El ataque de SQL fuera de banda consiste en enviar la información consultada a 
 
 Vamos a ver cómo realizar los diversos tipos de ataques de inyección SQL que hemos visto anteriormente y ver las respuestas que nos dan, además de entender las consultas que realizamos.
 
+Sería conveniente utilizar una distribución Linux, es recomendable usar Kali Linux.
+
 === Despliegue de la máquina
 
-En un directorio deberemos tener el auto_deploy.sh, avaricia.tar y docker-compose.yml, deberemos acceder con la terminal a dicho directorio y ejecutar el siguiente comando. 
+Como requisito, necesitaremos tener instalado docker y docker-compose.
+
+Podemos ver como instalar docker para varias distribuciones de linux -> https://docs.docker.com/engine/install/[Instalar Docker]
+
+Podemos ver como instalar docker-compose para varias distribuciones de linux -> https://docs.docker.com/compose/install/linux/[Instalar Docker-Compose]
+
+Necesitaremos descargar primeramente el auto_deploy.sh, el cual se muestra como una pirámide en la página. Después en un directorio deberemos tener el auto_deploy.sh, avaricia.tar y docker-compose.yml, deberemos acceder con la terminal a dicho directorio y ejecutar el siguiente comando. 
 
 (Si el auto_deploy no tiene permisos se los damos mediante *chmod +x*). 
 
@@ -757,7 +765,7 @@ Cómo ya hemos visto en anteriores pecados vuelve a aparecer el WAF, ya que es u
 Esto es solo una herramienta complementaria -> https://owasp.org/www-community/attacks/SQL_Injection_Bypassing_WAF[SQL Injection Bypassing WAF].
 
 ----
-"Si piensas que la tecnología puede resolver tus problemas de seguridad, entonces no entiendes los problemas ni entiendes la tecnología"
+"Si piensas que la tecnología puede resolver tus problemas de seguridad, entonces no entiendes los problemas ni entiendes la tecnología."
 
 — Bruce Schneier
 ----
