@@ -338,10 +338,10 @@ Usuario: admin' AND SUBSTRING(database(),1,1) = 'a' --
 Contraseña:
 ----
 
-Y así deberemos seguir con cada letra, obviamente esto no está pensado para hacerlo así y hay scripts que solucionan estos problemas. Una herramienta muy eficaz es https://github.com/sqlmapproject/sqlmap[sqlmap].
-
 * *SUBSTRING(database(),1,1)* -> Toma el primer carácter del nombre de la base de datos. Para pasar al siguiente caracter sería SUBSTRING(database(),2,1), etc.
-* *= 'b'* -> Compara si ese carácter es 'b'.
+* *= 'a'* -> Compara si ese carácter es 'a'.
+
+Y así deberemos seguir con cada letra, obviamente esto no está pensado para hacerlo así y hay scripts que solucionan estos problemas. Una herramienta muy eficaz es https://github.com/sqlmapproject/sqlmap[sqlmap].
 
 image::assets/blind/boolean-based/BaseDatos1.png[BaseDatos1,align=center]
 
