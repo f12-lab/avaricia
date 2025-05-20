@@ -45,7 +45,7 @@ Este ataque explota los mensajes de error devueltos por la base de datos para ob
 
 * Obtener la versión de la base de datos y poder usar ataques específicos dependiendo de la versión.
 * Conocer la estructura de la base de datos para poder intentar SQLi más específicas.
-* Extraer datos de la base de datos. El proceso es más largo y complejo pero se pueden manipular los errores para extraer datos.
+* Extraer datos de la base de datos. El proceso es más largo y complejo, pero se pueden manipular los errores para extraer datos.
 
 ==== b. Union-based SQL injection
 
@@ -54,6 +54,8 @@ Este ataque utiliza la cláusula *UNION* para combinar en una misma consulta inf
 === 2. Blind SQL Injection
 
 Las inyecciones SQL a ciegas son una variante en la que el atacante no recibe respuestas directas de la base de datos. En lugar de obtener mensajes de error o resultados visibles, debe inferir la información mediante observación indirecta.
+
+<<<
 
 Este tipo de ataques funciona como un sistema de "verdadero o falso", donde el atacante prueba diferentes consultas y analiza los cambios en el comportamiento del sistema.
 
@@ -102,7 +104,7 @@ image::assets/in-band/error-based/Recon2.png[Reconocimiento2,width=640,align=cen
 
 ===== Payloads
 
-Para cada uno de ellos utilizaremos la clausula updatexml(), que permite modificar datos XML dentro de bases de datos MySQL. En nuestro caso lo usaremos para lanzar los errores y mostrar su contenido como un mensaje.
+Para cada uno de ellos utilizaremos la cláusula updatexml(), que permite modificar datos XML dentro de bases de datos MySQL. En nuestro caso lo usaremos para lanzar los errores y mostrar su contenido como un mensaje.
 
 ----
 UPDATEXML(xml_target, xpath_expr, new_value)
@@ -135,7 +137,7 @@ Usuario: ' AND updatexml(null, concat(0x3a, database()), null) -- '
 Contraseña: 
 ----
 
-Como podemos ver la sintaxis es la misma que el anterior pero cambia el contenido del concat().
+Como podemos ver la sintaxis es la misma que el anterior, pero cambia el contenido del concat().
 
 * *database()* -> Esta es una función de MySQL que devuelve el nombre de la base de datos actual a la que está conectado el servidor MySQL.
 
@@ -188,7 +190,7 @@ Usuario: ' AND updatexml(null, concat(0x3a, (SELECT usuario FROM usuarios LIMIT 
 Contraseña: 
 ----
 
-Como ya sabemos la tabla y podemos conocer las distintas columnas que tiene, se hace más sencilla la busqueda de información. En este caso, vamos a extraer el nombre del primer usuario.
+Como ya sabemos la tabla y podemos conocer las distintas columnas que tiene, se hace más sencilla la búsqueda de información. En este caso, vamos a extraer el nombre del primer usuario.
 
 image::assets/in-band/error-based/Nombre1.png[NombreUsuarios1,align=center]
 
@@ -260,7 +262,7 @@ Usuario: ' UNION SELECT NULL, NULL, NULL,(...), group_concat(table_name) FROM in
 Contraseña: 
 ----
 
-* *group_concat(table_name)* -> Esta función de MySQL concatena todos los nombres de las tablas en la base de datos, obteniendolas separadas por comas.
+* *group_concat(table_name)* -> Esta función de MySQL concatena todos los nombres de las tablas en la base de datos, obteniéndolas separadas por comas.
 
 * *information_schema.tables* -> Esta tabla contiene información sobre todas las tablas en todas las bases de datos en MySQL. La consulta se limita a la base de datos actual utilizando WHERE *table_schema=database()*.
 
@@ -321,7 +323,7 @@ image::assets/in-band/union-based/Contraseñas2.png[Contraseñas2,align=center]
 
 En los ataques boolean-based se usan operadores lógicos como AND u OR para alterar las condiciones de una consulta SQL. AND se usa cuando se conoce una condición válida (como un usuario) y se quiere comprobar si otra también lo es, por ejemplo 1=1. OR, en cambio, permite que la consulta sea verdadera si al menos una condición se cumple, como usuario = 'admin' OR 1=1, forzando así una respuesta positiva.
 
-En nuestro caso, vamos a usar AND ya que con los anteriores resultado sabemos que existe el usuario *admin* y *user*. En caso de que no conozcamos estos datos se recomienda usar OR.
+En nuestro caso, vamos a usar AND ya que con los anteriores resultados sabemos que existe el usuario *admin* y *user*. En caso de que no conozcamos estos datos se recomienda usar OR.
 
 ===== Reconocimiento
 
@@ -411,7 +413,7 @@ image::assets/blind/boolean-based/Columnas1.png[Columnas1,width=420,align=center
 
 image::assets/blind/boolean-based/Columnas2.png[Columnas2,width=440,align=center]
 
-Y al igual que el resto se debe de ir carácter por carácter para obtener la pálabra correcta. Se van cambiando posiciones (LIMIT 1,1, LIMIT 2,1, etc.) y posiciones del carácter (SUBSTRING(...,2,1), etc.) para inferir cada tabla y cada letra.
+Y al igual que el resto se debe de ir carácter por carácter para obtener la palabra correcta. Se van cambiando posiciones (LIMIT 1,1, LIMIT 2,1, etc.) y posiciones del carácter (SUBSTRING(...,2,1), etc.) para inferir cada tabla y cada letra.
 
 *Extraer datos*
 
@@ -550,7 +552,7 @@ admin' AND IF(SUBSTRING((SELECT column_name FROM information_schema.columns WHER
 
 *Obtener contraseñas o datos sensibles*
 
-En este caso vamos a buscar la contraseña *admin123* dentro de los columna *password*
+En este caso vamos a buscar la contraseña *admin123* dentro de la columna *password*
 
 ----
 Usuario: admin' AND IF(SUBSTRING((SELECT password FROM usuarios LIMIT 1),1,1) = 'a', SLEEP(5), 0) -- 
@@ -576,7 +578,7 @@ SELECT password FROM usuarios LIMIT 1: Obtiene la primera fila de la columna pas
 
 ===== Aclaración
 
-Como hemos podido ver, ocurre como en el caso anterior aunque cambia un poco la sintaxis, por ello recomiendo el uso de scripts en los ataques a ciegas.
+Como hemos podido ver, ocurre como en el caso anterior, aunque cambia un poco la sintaxis, por ello recomiendo el uso de scripts en los ataques a ciegas.
 
 === 3. Out-of-band SQL injection (OOB SQLi)
 
