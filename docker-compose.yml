@@ -20,7 +20,8 @@ services:
         ipv4_address: 172.32.0.3
 
   mysql:
-    image: mysql:5.7
+    build:
+      context: ./mysql
     container_name: mysql
     restart: always
     environment:
@@ -28,9 +29,6 @@ services:
       MYSQL_DATABASE: banco
     ports:
       - "3306:3306"
-    volumes:
-      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
-    command: --secure-file-priv=""
     networks:
       default:
         ipv4_address: 172.32.0.4

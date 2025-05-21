@@ -1,3 +1,4 @@
+CREATE DATABASE IF NOT EXISTS banco;
 USE banco;
 
 CREATE TABLE usuarios (

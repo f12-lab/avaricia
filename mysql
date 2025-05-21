@@ -1,0 +1,6 @@
+FROM mysql:8.0
+
+# Copiamos el script de inicialización
+COPY mysqlFiles/init.sql /init.sql
+
+CMD ["mysqld", "--init-file=/init.sql"]
