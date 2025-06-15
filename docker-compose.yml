@@ -20,8 +20,7 @@ services:
         ipv4_address: 172.32.0.3
 
   mysql:
-    build:
-      context: ./mysql
+    image: mysql:latest
     container_name: mysql
     restart: always
     environment:
